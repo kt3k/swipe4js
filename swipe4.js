@@ -249,6 +249,7 @@ var initContext = function() {
     swipe.end.postHook = nopIfNotFunction(swipe.end.postHook);
 
     swipe.progress || (swipe.progress = {});
+    swipe.progress.neutral = nopIfNotFunction(swipe.progress.neutral);
     swipe.progress.up = nopIfNotFunction(swipe.progress.up);
     swipe.progress.down = nopIfNotFunction(swipe.progress.down);
     swipe.progress.left = nopIfNotFunction(swipe.progress.left);
