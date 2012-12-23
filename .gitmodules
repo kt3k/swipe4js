@@ -1,0 +1,3 @@
+[submodule "mainloopjs"]
+	path = mainloopjs
+	url = git://github.com/kt3k/mainloopjs.git
