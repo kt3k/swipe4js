@@ -1,0 +1,25 @@
+{
+  "name": "swipe4js",
+  "version": "1.0.0",
+  "description": "process 4-way swipes and dispatch hooks.",
+  "main": "swipe4.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kt3k/swipe4js.git"
+  },
+  "keywords": [
+    "swipe",
+    "dom",
+    "event"
+  ],
+  "author": "kt3k",
+  "license": "MIT lisence",
+  "readmeFilename": "README.md",
+  "gitHead": "3acb3c88e22b02cf6df239ded7ef7b393544b17b",
+  "devDependencies": {
+    "grunt": "git://github.com/gruntjs/grunt.git#e573e9942fc3bf4bf2ac36f8d9236bae39b30aaf"
+  }
+}
