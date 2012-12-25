@@ -20,6 +20,6 @@
   "readmeFilename": "README.md",
   "gitHead": "3acb3c88e22b02cf6df239ded7ef7b393544b17b",
   "devDependencies": {
-    "grunt": "git://github.com/gruntjs/grunt.git#e573e9942fc3bf4bf2ac36f8d9236bae39b30aaf"
+    "grunt": "~0.4.0"
   }
 }
