@@ -1,5 +1,13 @@
 swipe4.js
 =========
 
-_swipe4.js_ provide the functionality to hendle 4-direction
-swipes in the application mainloop.
+_swipe4.js_ process 4-way swipe on a dom and dispatch hooks.
+
+
+Build
+-----
+
+```
+npm install
+grunt
+```
