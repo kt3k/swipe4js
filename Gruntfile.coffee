@@ -5,5 +5,13 @@
 # license: MIT license
 
 module.exports = (grunt) ->
-    grunt.registerTask 'default', ->
-        console.log 'ok';
+
+  grunt.initConfig
+    uglify:
+      swipe4js:
+        files:
+          'swipe4.min.js': ['swipe4.js']
+
+  grunt.loadNpmTasks 'grunt-contrib-uglify'
+
+  grunt.registerTask 'default', ['uglify']
