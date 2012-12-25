@@ -1,5 +1,5 @@
 /**
- * swipe4.js 0.5
+ * swipe4.js 1.0.0
  * author: kt3k (Yosiya Hinosawa)
  * license: MIT lisence
  */
