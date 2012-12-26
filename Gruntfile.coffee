@@ -11,6 +11,9 @@ module.exports = (grunt) ->
       swipe4js:
         files:
           'swipe4.min.js': ['swipe4.js']
+      swipe4fulljs:
+        files:
+          'swipe4.full.min.js': ['mainloopjs/mainloop.js', 'swipe4.js']
 
   grunt.loadNpmTasks 'grunt-contrib-uglify'
 
