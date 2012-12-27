@@ -35,11 +35,6 @@ this.swipe4 = this.exports = function() {
     var touchInitial = null;
 
     /* utilities */
-    var callIfIsFunction = function(func, obj, args) {
-        if (typeof func === "function") {
-            func.apply(obj, args);
-        };
-    };
 
     var nop = function() {};
 
