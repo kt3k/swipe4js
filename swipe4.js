@@ -142,7 +142,7 @@ this.swipe4 = this.exports = function() {
         fingerCount = 0;
     };
 
-    var initEvents = function(elm) {
+    var bindEvents = function(elm) {
         if (window.document.documentElement.hasOwnProperty('ontouchstart')) {
             elm.addEventListener('touchstart', function(event) {
                 event.preventDefault();
@@ -225,6 +225,7 @@ this.swipe4 = this.exports = function() {
 
         // if init itself function then set it as init.func.
         typeof swipe.init === "function" && (swipe.init.func = swipe.init);
+        swipe.init.func = nopIfNotFunction(swipe.init.func);
 
         // set default fps 30.
         swipe.init.fps || (swipe.init.fps = 30);
@@ -261,10 +262,10 @@ this.swipe4 = this.exports = function() {
 
         initContext();
 
-        initEvents(swipe.target);
+        bindEvents(swipe.target);
 
         // custom initialization
-        callIfIsFunction(swipe.init.func);
+        swipe.init.func();
 
         touchReset();
         swipe.frameFunc(touchCurrent);
