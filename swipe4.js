@@ -11,18 +11,18 @@ this.swipe4 = this.exports = function() {
         UP: 0,
         DOWN: 1,
         RIGHT: 2,
-        LEFT: 3,
+        LEFT: 3
     };
 
     var SWIPE = {
-        THRESHOLD: 3,
+        THRESHOLD: 3
     };
 
     var PHASE = {
         NONE: 0,
         TOUCHING: 1,
         END: 2,
-        CANCEL: 3,
+        CANCEL: 3
     };
 
     /* module variables */
@@ -47,7 +47,7 @@ this.swipe4 = this.exports = function() {
         var x = touchCurrent.pageX - touchInitial.pageX;
         var y = touchCurrent.pageY - touchInitial.pageY;
         return Math.max(Math.abs(x), Math.abs(y));
-    }
+    };
 
     var swipeAngle = function() {
         var rad = Math.atan2(touchCurrent.pageY - touchInitial.pageY, touchCurrent.pageX - touchInitial.pageX);
@@ -169,7 +169,7 @@ this.swipe4 = this.exports = function() {
         } else {
             elm.addEventListener('mousedown', function(event) {
                 event.preventDefault();
-                touchStart(event)
+                touchStart(event);
             });
             elm.addEventListener('mousemove', function(event) {
                 event.preventDefault();
@@ -212,7 +212,7 @@ this.swipe4 = this.exports = function() {
         swipe.ctx = {
             dir: null,
             dist: null,
-            swiped: false,
+            swiped: false
         };
 
         // set empty object if not specified.
