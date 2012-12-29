@@ -167,6 +167,7 @@ this.swipe4 = this.exports = function (window) {
                 }
             });
             elm.addEventListener('touchcancel', function (event) {
+                event.preventDefault();
                 touchCancel();
             });
         } else {

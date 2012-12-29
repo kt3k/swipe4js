@@ -26,6 +26,7 @@ module.exports = (grunt) ->
           white: true
           maxlen: 80
           undef: true
+          unused: true
 
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-jshint'
