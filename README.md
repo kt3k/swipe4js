@@ -16,7 +16,7 @@ Then init swipe4 object.
 <script type="text/javascript">
 $(function() {
   swipe4({
-    target: $(''),
+    target: $('#swipe-panel')[0],
     end: {
       up: function() { alert('swiped up.'); },
       down: function() { alert('swiped down.'); },
@@ -26,6 +26,7 @@ $(function() {
   });
 });
 </script>
+<div id="swipe-panel" style="width: 300px; height: 300px; background: indianred; "></div>
 ```
 
 Options
