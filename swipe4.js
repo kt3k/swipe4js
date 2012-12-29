@@ -25,6 +25,14 @@ this.swipe4 = this.exports = function() {
         CANCEL: 3
     };
 
+    /* utilities */
+
+    var nop = function() {};
+
+    var nopIfNotFunction = function(func) {
+        return typeof func === "function" ? func : nop;
+    };
+
     /* module variables */
     var swipe = null;
 
@@ -33,14 +41,6 @@ this.swipe4 = this.exports = function() {
 
     var touchCurrent = null;
     var touchInitial = null;
-
-    /* utilities */
-
-    var nop = function() {};
-
-    var nopIfNotFunction = function(func) {
-        return typeof func === "function" ? func : nop;
-    };
 
     /* swipe utilities */
     var swipeDistance = function() { // uniform distance
@@ -207,7 +207,7 @@ this.swipe4 = this.exports = function() {
         }
     };
 
-    var initContext = function() {
+    var initContext = function(swipe) {
         // init swipe context.
         swipe.ctx = {
             dir: null,
@@ -253,9 +253,13 @@ this.swipe4 = this.exports = function() {
     };
 
     var exports = function(swipe_) {
+        if (swipe_ == null) {
+            return;
+        }
+
         swipe = swipe_;
 
-        initContext();
+        initContext(swipe);
 
         bindEvents(swipe.target);
 
