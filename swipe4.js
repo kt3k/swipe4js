@@ -51,7 +51,10 @@ this.swipe4 = this.exports = function (window) {
     };
 
     var swipeAngle = function () {
-        var rad = Math.atan2(touchCurrent.pageY - touchInitial.pageY, touchCurrent.pageX - touchInitial.pageX);
+        var rad = Math.atan2(
+            touchCurrent.pageY - touchInitial.pageY,
+            touchCurrent.pageX - touchInitial.pageX
+        );
         return (Math.floor(rad * 180 / Math.PI) + 360) % 360;
     };
 
@@ -113,7 +116,7 @@ this.swipe4 = this.exports = function (window) {
 
     // touch event handlers and a resetter
     var touchStart = function (touch) {
-        touchInitial = {pageX: touch.pageX, pageY: touch.pageY, layerX: touch.layerX, layerY: touch.layerY};
+        touchInitial = {pageX: touch.pageX, pageY: touch.pageY};
         touchCurrent = touch;
         phase = PHASE.TOUCHING;
         fingerCount = 1;
@@ -133,7 +136,7 @@ this.swipe4 = this.exports = function (window) {
 
     var touchReset = function () {
         phase = PHASE.NONE;
-        touchCurrent = {pageX: 0, pageY: 0, layerX: 0, layerY: 0};
+        touchCurrent = {pageX: 0, pageY: 0};
         fingerCount = 0;
     };
 
@@ -226,7 +229,7 @@ this.swipe4 = this.exports = function (window) {
         swipe.init.fps || (swipe.init.fps = 30);
 
         // set default target body.
-        swipe.target || (swipe.target = window.document.getElementsByTagName('body')[0]);
+        swipe.target || (swipe.target = window.document.body);
 
         // set default phase NONE.
         phase = swipe.init.phase != null ? swipe.init.phase : PHASE.NONE;
