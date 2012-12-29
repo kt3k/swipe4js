@@ -1,7 +1,7 @@
 swipe4.js
 =========
 
-_swipe4.js_ process 4-way swipe on a dom and dispatch hooks.
+_swipe4.js_ processes 4-way swipes on a dom and dispatches hooks.
 
 Usage
 -----
@@ -56,13 +56,13 @@ Options
 Build
 -----
 
-If you don't have grunt-cli
+First, install grunt-cli globaly.
 
 ```
 npm install -g grunt-cli
 ```
 
-then
+Then init node_modules and grunt.
 
 ```
 npm install
