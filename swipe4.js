@@ -4,7 +4,7 @@
  * license: MIT lisence
  */
 
-this.swipe4 = this.exports = function() {
+this.swipe4 = this.exports = function () {
 
     /* module constants */
     var DIRECTION = {
@@ -27,9 +27,9 @@ this.swipe4 = this.exports = function() {
 
     /* utilities */
 
-    var nop = function() {};
+    var nop = function () {};
 
-    var nopIfNotFunction = function(func) {
+    var nopIfNotFunction = function (func) {
         return typeof func === "function" ? func : nop;
     };
 
@@ -43,18 +43,18 @@ this.swipe4 = this.exports = function() {
     var touchInitial = null;
 
     /* swipe utilities */
-    var swipeDistance = function() { // uniform distance
+    var swipeDistance = function () { // uniform distance
         var x = touchCurrent.pageX - touchInitial.pageX;
         var y = touchCurrent.pageY - touchInitial.pageY;
         return Math.max(Math.abs(x), Math.abs(y));
     };
 
-    var swipeAngle = function() {
+    var swipeAngle = function () {
         var rad = Math.atan2(touchCurrent.pageY - touchInitial.pageY, touchCurrent.pageX - touchInitial.pageX);
         return (Math.floor(rad * 180 / Math.PI) + 360) % 360;
     };
 
-    var swipeDirection = function() {
+    var swipeDirection = function () {
         var angle = swipeAngle();
         if (angle < 45 || 315 <= angle) {
             return DIRECTION.RIGHT;
@@ -67,7 +67,7 @@ this.swipe4 = this.exports = function() {
         }
     };
 
-    var swipeEnd = function() {
+    var swipeEnd = function () {
         var dist = swipe.ctx.dist = swipeDistance();
         if (dist < SWIPE.THRESHOLD) {
             swipe.ctx.swiped = false;
@@ -87,7 +87,7 @@ this.swipe4 = this.exports = function() {
         }
     };
 
-    var swipeProgress = function(count) {
+    var swipeProgress = function (count) {
         if (count % 10 !== 0) {
             return;
         }
@@ -111,7 +111,7 @@ this.swipe4 = this.exports = function() {
     };
 
     // touch event handlers and a resetter
-    var touchStart = function(touch) {
+    var touchStart = function (touch) {
         touchInitial = {pageX: touch.pageX, pageY: touch.pageY, layerX: touch.layerX, layerY: touch.layerY};
         touchCurrent = touch;
         phase = PHASE.TOUCHING;
@@ -119,27 +119,27 @@ this.swipe4 = this.exports = function() {
         fingerCount = 1;
     };
 
-    var touchMove = function(touch) {
+    var touchMove = function (touch) {
         touchCurrent = touch;
     };
 
-    var touchEnd = function() {
+    var touchEnd = function () {
         phase = PHASE.END;
     };
 
-    var touchCancel = function() {
+    var touchCancel = function () {
         phase = PHASE.CANCEL;
     };
 
-    var touchReset = function() {
+    var touchReset = function () {
         phase = PHASE.NONE;
         touchCurrent = {pageX: 0, pageY: 0, layerX: 0, layerY: 0};
         fingerCount = 0;
     };
 
-    var bindEvents = function(elm) {
+    var bindEvents = function (elm) {
         if (window.document.documentElement.hasOwnProperty('ontouchstart')) {
-            elm.addEventListener('touchstart', function(event) {
+            elm.addEventListener('touchstart', function (event) {
                 event.preventDefault();
                 if (event.touches.length === 1) {
                     touchStart(event.touches[0]);
@@ -147,7 +147,7 @@ this.swipe4 = this.exports = function() {
                     touchCancel();
                 }
             });
-            elm.addEventListener('touchmove', function(event) {
+            elm.addEventListener('touchmove', function (event) {
                 event.preventDefault();
                 if (fingerCount === 1) {
                     touchMove(event.touches[0]);
@@ -155,7 +155,7 @@ this.swipe4 = this.exports = function() {
                     touchCancel();
                 }
             });
-            elm.addEventListener('touchend', function(event) {
+            elm.addEventListener('touchend', function (event) {
                 event.preventDefault();
                 if (fingerCount === 1) {
                     touchEnd();
@@ -163,26 +163,26 @@ this.swipe4 = this.exports = function() {
                     touchCancel();
                 }
             });
-            elm.addEventListener('touchcancel', function(event) {
+            elm.addEventListener('touchcancel', function (event) {
                 touchCancel();
             });
         } else {
-            elm.addEventListener('mousedown', function(event) {
+            elm.addEventListener('mousedown', function (event) {
                 event.preventDefault();
                 touchStart(event);
             });
-            elm.addEventListener('mousemove', function(event) {
+            elm.addEventListener('mousemove', function (event) {
                 event.preventDefault();
                 touchMove(event);
             });
-            elm.addEventListener('mouseup', function(event) {
+            elm.addEventListener('mouseup', function (event) {
                 event.preventDefault();
                 touchEnd();
             });
         }
     };
 
-    var frameFunc = function(count) {
+    var frameFunc = function (count) {
         if (phase === PHASE.NONE) {
             return;
         }
@@ -207,7 +207,7 @@ this.swipe4 = this.exports = function() {
         }
     };
 
-    var initContext = function(swipe) {
+    var initContext = function (swipe) {
         // init swipe context.
         swipe.ctx = {
             dir: null,
@@ -252,7 +252,7 @@ this.swipe4 = this.exports = function() {
         swipe.progress.right = nopIfNotFunction(swipe.progress.right);
     };
 
-    var exports = function(swipe_) {
+    var exports = function (swipe_) {
         if (swipe_ == null) {
             return;
         }
