@@ -19,6 +19,7 @@ module.exports = (grunt) ->
       swipe4js:
         src: ['swipe4.js']
         options:
+          bitwise: true
           curly: true
           quotmark: true
           strict: true
@@ -27,6 +28,7 @@ module.exports = (grunt) ->
           maxlen: 80
           undef: true
           unused: true
+          indent: 4
 
           eqnull: true
           expr: true
