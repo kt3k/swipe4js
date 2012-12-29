@@ -20,6 +20,8 @@ module.exports = (grunt) ->
         src: ['swipe4.js']
         options:
           expr: true
+          boss: true
+          strict: true
           eqnull: true
           white: true
 

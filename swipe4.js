@@ -4,7 +4,8 @@
  * license: MIT lisence
  */
 
-this.swipe4 = this.exports = function () {
+this.swipe4 = this.exports = function (window) {
+    "use strict";
 
     /* module constants */
     var DIRECTION = {
@@ -115,7 +116,6 @@ this.swipe4 = this.exports = function () {
         touchInitial = {pageX: touch.pageX, pageY: touch.pageY, layerX: touch.layerX, layerY: touch.layerY};
         touchCurrent = touch;
         phase = PHASE.TOUCHING;
-        count = 0;
         fingerCount = 1;
     };
 
@@ -226,7 +226,7 @@ this.swipe4 = this.exports = function () {
         swipe.init.fps || (swipe.init.fps = 30);
 
         // set default target body.
-        swipe.target || (swipe.target = document.getElementsByTagName('body')[0]);
+        swipe.target || (swipe.target = window.document.getElementsByTagName('body')[0]);
 
         // set default phase NONE.
         phase = swipe.init.phase != null ? swipe.init.phase : PHASE.NONE;
@@ -269,11 +269,13 @@ this.swipe4 = this.exports = function () {
         touchReset();
         swipe.frameFunc(touchCurrent);
 
-        return window.mainloop({
+        swipe.mainloop = window.mainloop({
             fps: swipe.init.fps,
             frameFunc: frameFunc,
             frameMonitor: swipe.frameMonitor
         }).run();
+
+        return swipe.mainloop;
     };
 
     exports.PHASE = PHASE;
@@ -282,4 +284,4 @@ this.swipe4 = this.exports = function () {
 
     return exports;
 
-}();
+}(this);
