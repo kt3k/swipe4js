@@ -34,16 +34,16 @@ Options
 
  name               | description
 --------------------|---------------------------
- `target`           | dom target to swipe event.
+ `target`           | dom target to swipe event. (default is `document.body`). required native dom, not jQuery object.
  `init.func`        | custom init function
- `init.fps`         | swipe checking function's frequency
- `end`              | hook functions dispatched when swipes ended
+ `init.fps`         | swipe checking function's frequency. (default is `30`)
+ `end`              | hook functions dispatched when swipes ended.
  `end.up`           | function dispatched when swiped up
  `end.down`         | function dispatched when swiped down
  `end.right`        | function dispatched when swiped right
  `end.left`         | function dispatched when swiped left
  `end.neutral`      | function dispatched when swiped very small distance in any direction
- `progress`         | hook functions dispatched during swipes are continuing
+ `progress`         | hook functions dispatched during swipes are continuing.
  `progress.up`      | function dispatched during swipes are continuing above the starting point
  `progress.down`    | function dispatched during swipes are continuing below the starting point
  `progress.left`    | function dispatched during swipes are continuing on left of the starting point
@@ -51,6 +51,8 @@ Options
  `progress.neutral` | function dispatched during swipes are continuing on almost the same point from the starting point
  `frameFunc`        | function called every frame
  `frameMonitor`     | function called every .1 second with first argument `fps` of frame function.
+
+*all parameters are optional.*
 
 
 Build
