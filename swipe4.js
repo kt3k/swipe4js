@@ -5,7 +5,7 @@
  */
 
 this.swipe4 = this.exports = function (window) {
-    "use strict";
+    'use strict';
 
     /* module constants */
     var DIRECTION = {
@@ -31,7 +31,7 @@ this.swipe4 = this.exports = function (window) {
     var nop = function () {};
 
     var nopIfNotFunction = function (func) {
-        return typeof func === "function" ? func : nop;
+        return typeof func === 'function' ? func : nop;
     };
 
     /* module variables */
@@ -223,7 +223,7 @@ this.swipe4 = this.exports = function (window) {
         swipe.init || (swipe.init = {});
 
         // if init itself function then set it as init.func.
-        typeof swipe.init === "function" && (swipe.init.func = swipe.init);
+        typeof swipe.init === 'function' && (swipe.init.func = swipe.init);
         swipe.init.func = nopIfNotFunction(swipe.init.func);
 
         // set default fps 30.

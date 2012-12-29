@@ -21,6 +21,7 @@ module.exports = (grunt) ->
         options:
           curly: true
           expr: true
+          quotmark: true
           boss: true
           strict: true
           eqnull: true
