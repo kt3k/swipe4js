@@ -19,19 +19,7 @@ module.exports = (grunt) ->
       swipe4js:
         src: ['swipe4.js']
         options:
-          bitwise: true
-          curly: true
-          quotmark: true
-          strict: true
-          trailing: true
-          white: true
-          maxlen: 80
-          undef: true
-          unused: true
-          indent: 4
-
-          eqnull: true
-          expr: true
+          jshintrc: ".jshintrc"
 
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-jshint'
