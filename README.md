@@ -56,7 +56,7 @@ Options
 Build
 -----
 
-First, install grunt-cli globaly.
+First, install grunt-cli globally.
 
 ```
 npm install -g grunt-cli
