@@ -257,9 +257,7 @@ this.swipe4 = this.exports = function (window) {
     };
 
     var exports = function (swipe_) {
-        if (swipe_ == null) {
-            return;
-        }
+        swipe_ || (swipe_ = {});
 
         swipe = swipe_;
 

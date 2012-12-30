@@ -28,7 +28,6 @@ module.exports = (grunt) ->
         files:
           'swipe4.full.min.js': ['mainloopjs/mainloop.js', 'swipe4.js']
 
-
   grunt.loadNpmTasks 'grunt-contrib-jshint'
   grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-contrib-connect'
