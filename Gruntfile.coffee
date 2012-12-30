@@ -7,6 +7,15 @@
 module.exports = (grunt) ->
 
   grunt.initConfig
+    jshint:
+      swipe4js:
+        src: ['swipe4.js']
+        options:
+          jshintrc: ".jshintrc"
+
+    qunit:
+      all: ['test/index.html']
+
     uglify:
       swipe4js:
         files:
@@ -15,13 +24,10 @@ module.exports = (grunt) ->
         files:
           'swipe4.full.min.js': ['mainloopjs/mainloop.js', 'swipe4.js']
 
-    jshint:
-      swipe4js:
-        src: ['swipe4.js']
-        options:
-          jshintrc: ".jshintrc"
 
-  grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-jshint'
+  grunt.loadNpmTasks 'grunt-contrib-connect'
+  grunt.loadNpmTasks 'grunt-contrib-qunit'
+  grunt.loadNpmTasks 'grunt-contrib-uglify'
 
-  grunt.registerTask 'default', ['jshint', 'uglify']
+  grunt.registerTask 'default', ['jshint', 'qunit', 'uglify']
