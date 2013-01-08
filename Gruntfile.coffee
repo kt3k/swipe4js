@@ -13,10 +13,6 @@ module.exports = (grunt) ->
         options:
           jshintrc: ".jshintrc"
 
-    coffeelint:
-      tests: ['test/tests.coffee']
-      gruntfile: ['Gruntfile.coffee']
-
     qunit:
       all: ['test/index.html']
 
@@ -29,9 +25,8 @@ module.exports = (grunt) ->
           'swipe4.full.min.js': ['mainloopjs/mainloop.js', 'swipe4.js']
 
   grunt.loadNpmTasks 'grunt-contrib-jshint'
-  grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-qunit'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
 
-  grunt.registerTask 'default', ['jshint', 'coffeelint', 'qunit', 'uglify']
+  grunt.registerTask 'default', ['jshint', 'qunit', 'uglify']
