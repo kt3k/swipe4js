@@ -1,8 +1,13 @@
 /**
- * swipe4.js 1.0.0
+ * swipe4.js 1.1.0
  * author: kt3k (Yosiya Hinosawa)
  * license: MIT lisence
  */
+
+ // swipe4 is now singleton because the underlying mainloop.js is singleton and
+ // not supporting multiple mainloops.
+ // But it is possible to have non-singleton version of swipe4 which only support
+ // end handlers and not progress handlers.
 
 this.swipe4 = this.exports = function (window) {
     'use strict';
@@ -140,49 +145,68 @@ this.swipe4 = this.exports = function (window) {
         fingerCount = 0;
     };
 
-    var bindEvents = function (elm) {
-        if (window.document.documentElement.hasOwnProperty('ontouchstart')) {
-            elm.addEventListener('touchstart', function (event) {
+    var setHandlers = function () {
+        swipe.handlers = {
+            touchStart: function (event) {
                 event.preventDefault();
                 if (event.touches.length === 1) {
                     touchStart(event.touches[0]);
                 } else {
                     touchCancel();
                 }
-            });
-            elm.addEventListener('touchmove', function (event) {
+            },
+
+            touchMove: function (event) {
                 event.preventDefault();
                 if (fingerCount === 1) {
                     touchMove(event.touches[0]);
                 } else {
                     touchCancel();
                 }
-            });
-            elm.addEventListener('touchend', function (event) {
+            },
+
+            touchEnd: function (event) {
                 event.preventDefault();
                 if (fingerCount === 1) {
                     touchEnd();
                 } else {
                     touchCancel();
                 }
-            });
-            elm.addEventListener('touchcancel', function (event) {
+            },
+
+            touchCancel: function (event) {
                 event.preventDefault();
                 touchCancel();
-            });
-        } else {
-            elm.addEventListener('mousedown', function (event) {
+            },
+
+            mouseDown: function (event) {
                 event.preventDefault();
                 touchStart(event);
-            });
-            elm.addEventListener('mousemove', function (event) {
+            },
+
+            mouseMove: function (event) {
                 event.preventDefault();
                 touchMove(event);
-            });
-            elm.addEventListener('mouseup', function (event) {
+            },
+
+            mouseUp: function (event) {
                 event.preventDefault();
                 touchEnd();
-            });
+            }
+        };
+    };
+
+    var bindEvents = function (elm) {
+        setHandlers();
+        if (window.document.documentElement.hasOwnProperty('ontouchstart')) {
+            elm.addEventListener('touchstart', swipe.handlers.touchStart);
+            elm.addEventListener('touchmove', swipe.handlers.touchMove);
+            elm.addEventListener('touchend', swipe.handlers.touchEnd);
+            elm.addEventListener('touchcancel', swipe.handlers.touchCancel);
+        } else {
+            elm.addEventListener('mousedown', swipe.handlers.mouseDown);
+            elm.addEventListener('mousemove', swipe.handlers.mouseMove);
+            elm.addEventListener('mouseup', swipe.handlers.mouseUp);
         }
     };
 
@@ -278,6 +302,10 @@ this.swipe4 = this.exports = function (window) {
         }).run();
 
         return swipe.mainloop;
+    };
+
+    exports.reset = function () {
+        window.mainloop.reset();
     };
 
     exports.PHASE = PHASE;
