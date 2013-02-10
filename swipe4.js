@@ -196,17 +196,34 @@ this.swipe4 = this.exports = function (window) {
         };
     };
 
-    var bindEvents = function (elm) {
+    var bindEvents = function () {
+        var elm = swipe.target;
+
         setHandlers();
         if (window.document.documentElement.hasOwnProperty('ontouchstart')) {
-            elm.addEventListener('touchstart', swipe.handlers.touchStart);
-            elm.addEventListener('touchmove', swipe.handlers.touchMove);
-            elm.addEventListener('touchend', swipe.handlers.touchEnd);
-            elm.addEventListener('touchcancel', swipe.handlers.touchCancel);
+            elm.addEventListener('touchstart', swipe.handlers.touchStart, false);
+            elm.addEventListener('touchmove', swipe.handlers.touchMove, false);
+            elm.addEventListener('touchend', swipe.handlers.touchEnd, false);
+            elm.addEventListener('touchcancel', swipe.handlers.touchCancel, false);
         } else {
-            elm.addEventListener('mousedown', swipe.handlers.mouseDown);
-            elm.addEventListener('mousemove', swipe.handlers.mouseMove);
-            elm.addEventListener('mouseup', swipe.handlers.mouseUp);
+            elm.addEventListener('mousedown', swipe.handlers.mouseDown, false);
+            elm.addEventListener('mousemove', swipe.handlers.mouseMove, false);
+            elm.addEventListener('mouseup', swipe.handlers.mouseUp, false);
+        }
+    };
+
+    var unbindEvents = function () {
+        var elm = swipe.target;
+
+        if (window.document.documentElement.hasOwnProperty('ontouchstart')) {
+            elm.removeEventListener('touchstart', swipe.handlers.touchStart, false);
+            elm.removeEventListener('touchmove', swipe.handlers.touchMove, false);
+            elm.removeEventListener('touchend', swipe.handlers.touchEnd, false);
+            elm.removeEventListener('touchcancel', swipe.handlers.touchCancel, false);
+        } else {
+            elm.removeEventListener('mousedown', swipe.handlers.mouseDown, false);
+            elm.removeEventListener('mousemove', swipe.handlers.mouseMove, false);
+            elm.removeEventListener('mouseup', swipe.handlers.mouseUp, false);
         }
     };
 
@@ -287,7 +304,7 @@ this.swipe4 = this.exports = function (window) {
 
         initContext(swipe);
 
-        bindEvents(swipe.target);
+        bindEvents();
 
         // custom initialization
         swipe.init.func();
@@ -306,6 +323,7 @@ this.swipe4 = this.exports = function (window) {
 
     exports.reset = function () {
         window.mainloop.reset();
+        unbindEvents();
     };
 
     exports.PHASE = PHASE;
