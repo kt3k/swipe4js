@@ -321,6 +321,7 @@ this.swipe4 = this.exports = function (window) {
         return swipe.mainloop;
     };
 
+    // to clear all events and reset the mainloop
     exports.clear = function () {
         window.mainloop.reset();
         unbindEvents();
