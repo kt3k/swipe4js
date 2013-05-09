@@ -4,11 +4,6 @@
  * license: MIT lisence
  */
 
- // swipe4 is now singleton because the underlying mainloop.js is singleton and
- // not supporting multiple mainloops.
- // But it is possible to have non-singleton version of swipe4 which only support
- // end handlers and not progress handlers.
-
 this.swipe4 = this.exports = function (window) {
     'use strict';
 
@@ -313,7 +308,7 @@ this.swipe4 = this.exports = function (window) {
         swipe.frameFunc(touchCurrent);
 
         swipe.mainloop = window.mainloop({
-            fps: swipe.init.fps,
+            frameRate: swipe.init.fps,
             frameFunc: frameFunc,
             frameMonitor: swipe.frameMonitor
         }).run();
